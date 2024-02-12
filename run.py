@@ -34,6 +34,17 @@ def get_quiz_data(question_title="questions"):
 # quiz_data = get_quiz_data()
 # print(quiz_data)
 
+def get_user_name():
+    """
+    Get the user's name.
+    """
+    return input("Please type your name and press enter: ").strip()
+
+# Test
+user_name = get_user_name()
+print(f"Hello {user_name}, Welcome to python Quiz Game!\n")
+print(f"Let's get started")
+
 
 def display_question(question_number, question_options):
     """
@@ -49,3 +60,5 @@ def display_question(question_number, question_options):
 # Test the function
 sample_question_options = ["What is 5 + 7?", "4", "5", "6", "12"]
 display_question(1, sample_question_options)
+
+
