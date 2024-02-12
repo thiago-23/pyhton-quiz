@@ -12,8 +12,21 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('python_quiz')
 
-questions = SHEET.worksheet('questions')
+def get_quiz_data(question_title="questions"):
+    """
+    Retrieve quiz data and returns list of list representing questions with options.
+    """
+    try:
+        worksheet = SHEET.worksheet(question_title)
+        # Skip header row and retrieve questions and options
+        questions_and_options = worksheet.get_all_values()[1:]
+        return questions_and_options
+    except gspread.exceptions.WorksheetNotFound:
+        print(f"Worksheet '{question_title}' not found.")
+        return []
 
-data = questions.get_all_values()
+# Test the function
+quiz_data = get_quiz_data()
+print(quiz_data)
 
-print(data)
+
