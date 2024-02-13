@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+from art import *
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -12,7 +13,10 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('python_quiz')
 
+Art=text2art("Python Quiz") # return art as str in normal mode
+
 print("Welcome to the Python Quiz Game!")
+print(Art)
 print("Answer a series of Python-related questions and see how well you know the language.")
 print("For each question, choose the correct option (a, b, c, or d). Let's get started!\n")
 
@@ -43,7 +47,7 @@ def get_user_name():
 # Test
 user_name = get_user_name()
 print(f"Hello {user_name}, Welcome to python Quiz Game!\n")
-print(f"Let's get started")
+print(f"Let's get started\n")
 
 
 def display_question(question_number, question_options):
@@ -58,7 +62,26 @@ def display_question(question_number, question_options):
     print(f"d) {question_options[4]}\n")
 
 # Test the function
-sample_question_options = ["What is 5 + 7?", "4", "5", "6", "12"]
-display_question(1, sample_question_options)
+# sample_question_options = ["What is 5 + 7?", "4", "5", "6", "12"]
+# display_question(1, sample_question_options)
 
+def get_user_answer():
+    """
+    Get the user's choice for a quiz question (a, b, c, or d).
+    Implement a while loop to continuously prompt the user to input a valid choice.
+    """
+    valid_choices = ["a", "b", "c", "d"]
 
+    while True:
+        user_answer = input("Please choose between (a, b, c, or d): ").strip().lower()
+
+        if user_answer in valid_choices:
+            break
+        else:
+            print("Invalid choice. Please choose a, b, c, or d.")
+
+    return user_answer
+
+#Test Function
+user_choice = get_user_answer()
+print(f"You chose: {user_choice}")
