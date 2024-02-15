@@ -70,6 +70,37 @@ def get_user_answer():
 # print(f"You chose: {user_choice}")
 
 
+def update_sheet_with_answers(user_name, user_answers, user_score):
+    """
+    Update the 'answers' worksheet with user data.
+    """
+    try:
+        answers_sheet = SHEET.worksheet("answers")
+
+        header_row = answers_sheet.row_values(1)
+        if len(header_row) > 1:
+            correct_answers = header_row[1:]
+        else:
+            print("No correct answers found in the 'answers' worksheet.")
+            return
+
+        correct_answers_count = sum(user_answers[i] == correct_answers[i] for i in range(len(correct_answers)))
+        overall_score = correct_answers_count / len(correct_answers) * 100
+
+        # Find the next available row
+        next_row = len(answers_sheet.get_all_values()) + 1
+
+        # Append user data to the next available row without unnecessary values
+        user_data = [user_name] + user_answers[:len(correct_answers)]  # Only take the necessary answers
+
+        # Append the new user data to the next available row
+        answers_sheet.append_row(user_data)
+
+        print(f"User data successfully stored in 'answers' worksheet.")
+        print(f"Correct answers score is: {correct_answers_count}/{len(correct_answers)}")
+        print(f"Overall score is: {overall_score:.2f}%")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 def main():
     """
@@ -90,4 +121,12 @@ def main():
     questions_and_options = get_quiz_data()
 
 if __name__ == "__main__":
+    # Run the main function
     main()
+
+    # Test the update_sheet_with_answers function
+    user_name = "John Doe"
+    user_answers = ["a", "b", "c", "d"]
+    user_score = 0  # Placeholder score for now
+
+    update_sheet_with_answers(user_name, user_answers, user_score)
