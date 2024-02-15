@@ -13,13 +13,6 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('python_quiz')
 
-Art=text2art("Python Quiz") # return art as str in normal mode
-
-print("Welcome to the Python Quiz Game!")
-print(Art)
-print("Answer a series of Python-related questions and see how well you know the language.")
-print("For each question, choose the correct option (a, b, c, or d). Let's get started!\n")
-
 
 def get_quiz_data(question_title="questions"):
     """
@@ -34,20 +27,13 @@ def get_quiz_data(question_title="questions"):
         print(f"Worksheet '{question_title}' not found.")
         return []
 
-# Test the function
-# quiz_data = get_quiz_data()
-# print(quiz_data)
 
 def get_user_name():
     """
     Get the user's name.
     """
-    return input("Please type your name and press enter: ").strip()
+    return input("Please enter your name: ").strip()
 
-# Test
-user_name = get_user_name()
-print(f"Hello {user_name}, Welcome to python Quiz Game!\n")
-print(f"Let's get started\n")
 
 
 def display_question(question_number, question_options):
@@ -61,9 +47,6 @@ def display_question(question_number, question_options):
     print(f"c) {question_options[3]}")
     print(f"d) {question_options[4]}\n")
 
-# Test the function
-# sample_question_options = ["What is 5 + 7?", "4", "5", "6", "12"]
-# display_question(1, sample_question_options)
 
 def get_user_answer():
     """
@@ -83,5 +66,28 @@ def get_user_answer():
     return user_answer
 
 #Test Function
-user_choice = get_user_answer()
-print(f"You chose: {user_choice}")
+# user_choice = get_user_answer()
+# print(f"You chose: {user_choice}")
+
+
+
+def main():
+    """
+    Main function to run the Python Quiz Game.
+    """
+
+    art = text2art("Python Quiz") # Return ASCII art as a string in normal modee
+
+    print("Welcome to the Python Quiz Game!")
+    print(art)
+    print("Answer a series of Python-related questions and see how well you know the language.")
+    print("For each question, choose the correct option (a, b, c, or d). Let's get started!\n")
+
+    user_name = get_user_name()
+    print(f"Hello {user_name}, Welcome to python Quiz Game!\n")
+    print(f"Let's get started\n")
+
+    questions_and_options = get_quiz_data()
+
+if __name__ == "__main__":
+    main()
