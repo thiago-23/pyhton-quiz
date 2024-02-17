@@ -65,10 +65,6 @@ def get_user_answer():
 
     return user_answer
 
-#Test Function
-# user_choice = get_user_answer()
-# print(f"You chose: {user_choice}")
-
 
 def update_sheet_with_answers(user_name, user_answers):
     """
@@ -135,6 +131,17 @@ def main():
 
         # Update the 'answers' worksheet with user data
         update_sheet_with_answers(user_name, user_responses)
+
+        while True:
+            play_again = input("Do you want to play again? (yes/no): ").strip().lower()
+            if play_again in ["yes", "no"]:
+                break
+            else:
+                print("Invalid input. Please enter 'yes' or 'no'.")
+
+        if play_again != "yes":
+            print("Thanks for playing. Goodbye!")
+            break
 
 if __name__ == "__main__":
     # Run the main function
