@@ -1,4 +1,6 @@
+import colorama
 import gspread
+from colorama import Fore
 from google.oauth2.service_account import Credentials
 from art import *
 
@@ -32,7 +34,7 @@ def get_user_name():
     """
     Get the user's name.
     """
-    return input("Please enter your name: ").strip()
+    return input("Please enter your name:\n ").strip()
 
 
 
@@ -56,12 +58,12 @@ def get_user_answer():
     valid_choices = ["a", "b", "c", "d"]
 
     while True:
-        user_answer = input("Please choose between (a, b, c, or d): ").strip().lower()
+        user_answer = input("Please choose between (a, b, c, or d): \n").strip().lower()
 
         if user_answer in valid_choices:
             break
         else:
-            print("Invalid choice. Please choose a, b, c, or d.")
+            print("Invalid choice. Please choose a, b, c, or d.\n")
 
     return user_answer
 
@@ -77,7 +79,7 @@ def update_sheet_with_answers(user_name, user_answers):
         if len(header_row) > 2:  # Check if there are correct answers in the sheet
             correct_answers = header_row[2:]
         else:
-            print("No correct answers found in the 'answers' worksheet.")
+            print("No correct answers found in the 'answers' worksheet.\n")
             return
 
         correct_answers_count = 0
@@ -100,7 +102,7 @@ def update_sheet_with_answers(user_name, user_answers):
 
         print(f"User data successfully stored in 'answers' worksheet.")
         print(f"Correct answers score is: {correct_answers_count}/{len(correct_answers)}")
-        print(f"Overall score is: {overall_score:.2f}%")
+        print(f"Overall score is: {overall_score:.2f}%\n")
     except Exception as e:
         print(f"An error occurred: {e}")
 
@@ -133,14 +135,14 @@ def main():
         update_sheet_with_answers(user_name, user_responses)
 
         while True:
-            play_again = input("Do you want to play again? (yes/no): ").strip().lower()
+            play_again = input("Do you want to play again? (yes/no): \n").strip().lower()
             if play_again in ["yes", "no"]:
                 break
             else:
                 print("Invalid input. Please enter 'yes' or 'no'.")
 
         if play_again != "yes":
-            print("Thanks for playing. Goodbye!")
+            print("Thanks for playing. Goodbye!\n")
             break
 
 if __name__ == "__main__":
