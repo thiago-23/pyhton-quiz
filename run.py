@@ -70,7 +70,7 @@ def get_user_answer():
 # print(f"You chose: {user_choice}")
 
 
-def update_sheet_with_answers(user_name, user_answers, user_score):
+def update_sheet_with_answers(user_name, user_answers):
     """
     Update the 'answers' worksheet with user data.
     """
@@ -78,20 +78,26 @@ def update_sheet_with_answers(user_name, user_answers, user_score):
         answers_sheet = SHEET.worksheet("answers")
 
         header_row = answers_sheet.row_values(1)
-        if len(header_row) > 1:
-            correct_answers = header_row[1:]
+        if len(header_row) > 2:  # Check if there are correct answers in the sheet
+            correct_answers = header_row[2:]
         else:
             print("No correct answers found in the 'answers' worksheet.")
             return
 
-        correct_answers_count = sum(user_answers[i] == correct_answers[i] for i in range(len(correct_answers)))
+        correct_answers_count = 0
+
+        # Compare user responses with correct answers starting from column C (index 2)
+        for i in range(len(user_answers)):
+            if user_answers[i] == correct_answers[i]:
+                correct_answers_count += 1
+
         overall_score = correct_answers_count / len(correct_answers) * 100
 
         # Find the next available row
-        next_row = len(answers_sheet.get_all_values()) + 1
+        next_row = len(answers_sheet.col_values(1)) + 1
 
         # Append user data to the next available row without unnecessary values
-        user_data = [user_name] + user_answers[:len(correct_answers)]  # Only take the necessary answers
+        user_data = [user_name] + [""] * 1 + user_answers  # Insert one empty column before user choices
 
         # Append the new user data to the next available row
         answers_sheet.append_row(user_data)
@@ -106,27 +112,30 @@ def main():
     """
     Main function to run the Python Quiz Game.
     """
+    while True:
+        art = text2art("Python Quiz") # Return ASCII art as a string in normal mode
 
-    art = text2art("Python Quiz") # Return ASCII art as a string in normal modee
+        print("Welcome to the Python Quiz Game!")
+        print(art)
+        print("Answer a series of Python-related questions and see how well you know the language.")
+        print("For each question, choose the correct option (a, b, c, or d). Let's get started!\n")
 
-    print("Welcome to the Python Quiz Game!")
-    print(art)
-    print("Answer a series of Python-related questions and see how well you know the language.")
-    print("For each question, choose the correct option (a, b, c, or d). Let's get started!\n")
+        user_name = get_user_name()
+        print(f"Hello {user_name}, Welcome to python Quiz Game!\n")
+        print(f"Let's get started\n")
 
-    user_name = get_user_name()
-    print(f"Hello {user_name}, Welcome to python Quiz Game!\n")
-    print(f"Let's get started\n")
+        questions_and_options = get_quiz_data()
 
-    questions_and_options = get_quiz_data()
+        # Store user choices and display questions
+        user_responses = []
+        for idx, question_options in enumerate(questions_and_options, start=1):
+            display_question(idx, question_options)
+            user_answer = get_user_answer()
+            user_responses.append(user_answer)
+
+        # Update the 'answers' worksheet with user data
+        update_sheet_with_answers(user_name, user_responses)
 
 if __name__ == "__main__":
     # Run the main function
     main()
-
-    # Test the update_sheet_with_answers function
-    user_name = "John Doe"
-    user_answers = ["a", "b", "c", "d"]
-    user_score = 0  # Placeholder score for now
-
-    update_sheet_with_answers(user_name, user_answers, user_score)
