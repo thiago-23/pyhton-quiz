@@ -96,7 +96,7 @@ def update_sheet_with_answers(user_name, user_answers):
         user_data = [user_name] + [""] * 1 + user_answers  # Insert one empty column before user choices
 
         # Append the new user data to the next available row
-        answers_sheet.append_row(user_data)
+        answers_sheet.append_row(user_data, value_input_option='USER_ENTERED', insert_data_option='INSERT_ROWS', table_range=f'A{next_row}:L{next_row}')
 
         print(f"User data successfully stored in 'answers' worksheet.")
         print(f"Correct answers score is: {correct_answers_count}/{len(correct_answers)}")
