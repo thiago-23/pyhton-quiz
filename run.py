@@ -30,13 +30,25 @@ def get_quiz_data(question_title="questions"):
         print(f"Worksheet '{question_title}' not found.")
         return []
 
+def is_valid_name(name):
+    """
+    Check if the provided name contains only letters.
+    True if the name contains only letters, False otherwise.
+    """
+    return name.isalpha()
+
 
 def get_user_name():
     """
     Get the user's name.
     """
-    return input("Please enter your name:\n ").strip()
+    while True:
+        user_name = input("Please enter your name:\n ").strip()
 
+        if is_valid_name(user_name):
+            return user_name
+        else:
+            print(f"{Fore.RED}Invalid name! Please enter only letters.{Style.RESET_ALL}\n")
 
 
 def display_question(question_number, question_options):
