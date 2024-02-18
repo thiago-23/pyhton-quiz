@@ -1,32 +1,50 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Python Quiz
 
-Welcome,
+The Python Quiz Game is a console-based application that tests the user's knowledge of Python through a series of 10 multiple-choice questions. the Python Quiz Game is to provide an interactive and educational experience for individuals learning Python. The results are stored in a Google Sheets spreadsheet, facilitating data analysis and visualization.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+# Contents
+* [Technologies Used](#technologies-used)
+* [User Experience](#user-experience-ux)
+* [Existing Features](#existing-features)
+* [Future Implementations](#future-implementations)
+* [](#)
 
-## Reminders
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+# Technologies Used
+* Python
 
-## Creating the Heroku app
+# Libraries
+* colorama
+* gspread
+* google-auth
+* Art
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+# Frameworks & Tools
+* Heroku Platform - for deployment
+* Gitpod - for coding and creating the website
+* Github - for version control and deployment
+* Google Sheets API - for handling data automation
+* Code Institute template - for providing necessary files to run the mock terminal in the browser
 
-1. `heroku/python`
-2. `heroku/nodejs`
+# User Experience (UX)
+The Python Quiz Game is designed for users who are learning Python and want to test their knowledge. The user experience includes:
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+* Clear instructions for playing the quiz
+* User-friendly input prompts
+* Display of the final score
+* Option to play again or exit the program
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+# Existing Features
+* Introduction to the Python Quiz
+* User input for a valid username
+* Display of quiz instructions
+* Presentation of quiz questions with multiple-choice options
+* Validation of user choices
+* Calculation and display of the final score
+* Option to play again or exit the program
 
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
+# Future Implementations
+* Inclusion of various question levels
+* Random selection of questions from a library
+* Add a timer for each question, making the quiz more challenging.
+* Create a leaderboard feature to showcase the highest scores achieved by users. This can add a competitive element and encourage users to improve their performance.
