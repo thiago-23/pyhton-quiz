@@ -2,6 +2,17 @@
 
 The Python Quiz Game is a console-based application that tests the user's knowledge of Python through a series of 10 multiple-choice questions. the Python Quiz Game is to provide an interactive and educational experience for individuals learning Python. The results are stored in a Google Sheets spreadsheet, facilitating data analysis and visualization.
 
+
+![Python Quiz](./documentation%20/game.png)
+
+A version of the classic game Python Quiz created and played using the command line and the Python programming language which has been deployed with Heroku.
+
+Visit the live site: [Python Quiz](https://python-quizzes-2fae7cb23693.herokuapp.com/)
+
+# Demo
+
+
+
 # Contents
 
 - [User Experience](#user-experience-ux)
@@ -102,13 +113,40 @@ A flowchart summarizing the structure and logic of the application is provided i
 # Features
 
 ## Existing Features
-* Introduction to the Python Quiz
-* User input for a valid username
-* Display of quiz instructions
-* Presentation of quiz questions with multiple-choice options
-* Validation of user choices
-* Calculation and display of the final score
-* Option to play again or exit the program
+- Introduction to the Python Quiz
+
+![Introduction](./documentation%20/game.png)
+
+- User input for a valid username
+
+![Username](./documentation%20/invalid_name.png)
+
+- Display of quiz instructions
+
+![Instructions](./documentation%20/instruction.png)
+
+- Presentation of quiz questions with multiple-choice options
+
+![Questions](./documentation%20/question.png)
+
+- Validation of user choices
+
+![Choice validation](./documentation%20/)
+
+- Calculation and display of the final score
+
+![Score](./documentation%20/score.png)
+
+- Option to play again or exit the program
+
+![Play Again](./documentation%20/play_again.png)
+![Play again validation](./documentation%20/play_again_validation.png)
+
+- Terminate the Game with a display message.
+
+![End game](./documentation%20/end_game.png)
+
+
 
 ## Future Implementations
 * Inclusion of various question levels
