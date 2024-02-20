@@ -21,6 +21,8 @@ Visit the live site: [Python Quiz](https://python-quizzes-2fae7cb23693.herokuapp
 - [Play the Game](#playing-the-game)
 
 - [Technologies Used](#technologies-used)
+    - [Libraries](#libraries)
+    - [Frameworks & Tools](#frameworks--tools)
 
 - [Design](#design)
     - [Flowchart](#flowchart)
@@ -29,6 +31,10 @@ Visit the live site: [Python Quiz](https://python-quizzes-2fae7cb23693.herokuapp
     - [Existing Features](#existing-features)
     - [Future Implementations](#future-implementations)
 
+- [Testing](#testing)
+
+- [Solved Bugs](#solved-bugs)
+
 - [Deployment & Local Development](#Deployment--Local-Development)
 
   - [Deployment](#Deployment)
@@ -36,8 +42,9 @@ Visit the live site: [Python Quiz](https://python-quizzes-2fae7cb23693.herokuapp
     - [How to Fork](#How-to-Fork)
     - [How to Clone](#How-to-Clone)
 
-- [](#)
+- [Credits](#credits)
 
+- [Acknowledgement](#acknowledgement)
 
 --- 
 
@@ -51,7 +58,9 @@ The Python Quiz Game is designed for users who are learning Python and want to t
 * User-friendly input prompts
 * Display of the final score
 * Option to play again or exit the program
+
 ---
+
 ## User stories:
 
 * As a user, I want to easily start the quiz: I expect a straightforward way to begin the quiz without any complex setup.
@@ -131,7 +140,7 @@ A flowchart summarizing the structure and logic of the application is provided i
 
 - Validation of user choices
 
-![Choice validation](./documentation%20/)
+![Choice validation](./documentation%20/invalid_choice.png)
 
 - Calculation and display of the final score
 
@@ -146,19 +155,57 @@ A flowchart summarizing the structure and logic of the application is provided i
 
 ![End game](./documentation%20/end_game.png)
 
+- The game keeps track of users choices in a Google Sheets setup. All users choices are gets saved. How does this magic happen? Well, a Google drive and Google Sheets working behind the scenes, connected the game through the Google Cloud Platform comparing the user input choices with answers sheet and calculate the score displaied on the game. So, users input are not just letter's; they're part of a high-tech adventure in the gaming world! 🚀
 
+![Questions-Sheet](./documentation%20/questions.png)
+
+![Answers-Sheet](./documentation%20/answers.png)
 
 ## Future Implementations
-* Inclusion of various question levels
-* Random selection of questions from a library
-* Add a timer for each question, making the quiz more challenging.
-* Create a leaderboard feature to showcase the highest scores achieved by users. This can add a competitive element and encourage users to improve their performance.
+- Inclusion of various question levels
+- Random selection of questions from a library
+- Add a timer for each question, making the quiz more challenging.
+- Create a leaderboard feature to showcase the highest scores achieved by users. This can add a competitive element and encourage users to improve their performance.
+
+---
+
+# Testing 
+
+## Validator 
+I ran the project through CI Python Linter to ensure a clean and error-free codebase.
+
+![CI Python Linter](./documentation%20/testing.png)
+
+---
+
+# Solved Bugs
+
+1.  Incorrect formula for overall score calculation: 
+- Issue: The formula for calculating the overall score was not be accurate.
+- Fix: Review the formula and ensure it correctly calculates the overall score.
+
+2. Indentation:
+
+- Issue: Some code blocks had inconsistent indentation.
+- Fix: Ensure consistent indentation throughout the code.
+
+3. Question numbering:
+
+- Issue: The question numbering was not prompting and the displayed question.
+- Fix: Ensure that the question numbers were consistent in prompts and displays.
+
+4. Repetition of meesage:
+
+- Issue: There's a typo in the print statement where the welcome message was displayed three times.
+- Fix: Correct the typo in the print statement.
+
+---
 
 ## Deployment & Local Development
 
 ### Deployment
 
-- This site was deployed by completing the following steps:
+ This site was deployed by completing the following steps:
 
 1. Log in to [Heroku](https://id.heroku.com) or create an account
 2. On the main page click the button labeled New in the top right corner and from the drop-down menu select Create New App
@@ -198,3 +245,19 @@ To clone the thiago-23/pyhton-quiz repository:
 5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
 
 ---
+
+# Credits
+
+## Reference Material
+
+- [Love Sandwiches Walkthrough Project ](https://github.com/Code-Institute-Solutions/love-sandwiches-p5-sourcecode/)
+
+- [W3 School](https://www.w3schools.com/python/default.asp#gsc.tab=0)
+- [Python.org](https://peps.python.org/pep-0008/#introduction)
+- [Markdown Cheatsheet](https://guides.github.com/features/mastering-markdown/)
+
+---
+
+# Acknowledgement
+
+- [Spencer Barriball](https://github.com/5pence?tab=repositories), My code institute Mentor who supports me on all my queries during my project.
